@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Beach Tennis Bonaire</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: poster-scale Anton headlines on sand ground, whole fields of BTB blue, sun yellow and night,
+   one dominant court photograph per section, one full-width frame with equal gutters. */
+:root{
+  --ground:#F3F1EC;      /* white Bonaire sand */
+  --tone:#E6E2D8;        /* one step darker sand */
+  --ink:#111318;         /* logo black */
+  --blue:#1643AA;        /* BTB blue */
+  --blue-step:#123A96;   /* tone step inside a blue field */
+  --yellow:#F6C016;      /* BTB sun yellow */
+  --night:#0F1116;       /* after 10 PM */
+  --night-step:#1A1D24;
+  --on-field:#FFFFFF;
+  --on-yellow:#111318;
+  --logo-dark:block; --logo-light:none;
+  --display:"Anton", Impact, "Arial Narrow", sans-serif;
+  --text:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --s-xl:clamp(40px, 13.2vw, 236px);
+  --s-l:clamp(38px, 6.2vw, 108px);
+  --s-m:clamp(26px, 2.7vw, 44px);
+  --s-lead:clamp(19px, 1.55vw, 25px);
+  --s-body:clamp(16px, 1.06vw, 18px);
+  --gut:clamp(16px, 3.2vw, 48px);
+  --gap:clamp(16px, 2vw, 28px);
+  --sec:clamp(88px, 11vw, 200px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#14161B; --tone:#1E2128; --ink:#F1EEE7; --night:#0A0B0E; --night-step:#181A20;
+    --logo-dark:none; --logo-light:block; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14161B; --tone:#1E2128; --ink:#F1EEE7; --night:#0A0B0E; --night-step:#181A20;
+  --logo-dark:none; --logo-light:block; color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--text);font-size:var(--s-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ground)}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:400}
+ul,ol,dl,dd{margin:0;padding:0}
+li{list-style:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.blue :focus-visible,.yellow :focus-visible{outline-color:var(--ink)}
+
+/* frame */
+.wrap{padding-left:max(var(--gut), env(safe-area-inset-left,0px));padding-right:max(var(--gut), env(safe-area-inset-right,0px))}
+.sec{padding-block:var(--sec)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.grid > *{min-width:0}
+
+/* type */
+.d-xl,.d-l,.d-m{font-family:var(--display);text-transform:uppercase;line-height:.9;letter-spacing:-.01em;text-wrap:balance}
+.d-xl{font-size:var(--s-xl);line-height:.9;padding-top:.06em}
+.d-l{font-size:var(--s-l)}
+.d-m{font-size:var(--s-m);line-height:.98}
+.lead{font-size:var(--s-lead);line-height:1.42;font-weight:500;max-width:34ch}
+.prose{max-width:64ch;display:grid;gap:1em}
+.prose h3{font-family:var(--display);text-transform:uppercase;font-size:var(--s-m);line-height:1;margin-top:.8em}
+.prose li{list-style:disc;margin-left:1.2em;padding-left:.2em}
+.prose ul,.prose ol{display:grid;gap:.4em}
+.strong{font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+
+/* fields */
+.blue{background:var(--blue);color:var(--on-field)}
+.yellow{background:var(--yellow);color:var(--on-yellow)}
+.night{background:var(--night);color:#F3F1EC}
+.tone{background:var(--tone)}
+.y-text{color:var(--yellow)}
+
+/* buttons and links */
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:14px 24px;border:0;border-radius:0;font:700 16px/1 var(--text);text-decoration:none;cursor:pointer;background:var(--blue);color:#fff;transition:background-color .2s ease, color .2s ease, transform .12s ease}
+.btn:hover{background:var(--ink);color:var(--ground)}
+.btn:active{transform:translateY(2px)}
+.btn.y{background:var(--yellow);color:var(--on-yellow)}
+.btn.y:hover{background:#fff;color:var(--on-yellow)}
+.btn.k{background:var(--on-yellow);color:#fff}
+.btn.k:hover{background:#fff;color:var(--on-yellow)}
+.btn.w{background:#fff;color:var(--blue)}
+.btn.w:hover{background:var(--yellow);color:var(--on-yellow)}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(4px)}
+.tlink{font-weight:700;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--yellow);transition:text-underline-offset .2s ease}
+.tlink:hover{text-underline-offset:9px}
+.blue .tlink{text-decoration-color:var(--yellow)}
+.yellow .tlink{text-decoration-color:var(--ink)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ground)}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:58px;width:auto}
+.logo .lg-d{display:var(--logo-dark)} .logo .lg-l{display:var(--logo-light)}
+.menu{display:flex;align-items:center;gap:clamp(12px,2.2vw,36px)}
+.menu > li{position:relative}
+.menu > li > a{display:inline-block;padding:26px 0;font-weight:600;text-decoration:none;font-size:16px}
+.menu > li > a.btn{padding:14px 22px}
+.menu > li > a.btn:hover{text-decoration:none}
+.menu > li > a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px;text-decoration-color:var(--yellow)}
+.menu > li > a:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:8px;text-decoration-color:var(--blue)}
+.sub{position:absolute;left:-20px;top:100%;min-width:250px;background:var(--tone);padding:12px 0;display:none}
+.menu > li:hover .sub,.menu > li:focus-within .sub{display:block}
+.sub a{display:block;padding:10px 20px;text-decoration:none;font-weight:500}
+.sub a:hover{background:var(--blue);color:#fff}
+.menu-btn{display:none;background:var(--ink);color:var(--ground);border:0;font:700 16px var(--text);min-height:48px;padding:0 20px;cursor:pointer}
+.drawer{position:fixed;inset:0;z-index:70;background:var(--blue);color:#fff;overflow:auto;padding-top:calc(env(safe-area-inset-top,0px) + 16px);padding-bottom:40px}
+.drawer .bar{display:flex;justify-content:space-between;align-items:center;min-height:62px}
+.drawer nav{display:grid;gap:28px;margin-top:24px}
+.drawer h2{font-family:var(--display);font-size:44px;text-transform:uppercase;line-height:1}
+.drawer h2 a{text-decoration:none}
+.drawer nav ul{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:8px}
+.drawer nav ul a{font-weight:600;text-decoration:none;opacity:.9}
+.drawer .close{background:#fff;color:var(--blue);border:0;font:700 16px var(--text);min-height:48px;padding:0 20px;cursor:pointer}
+@media (max-width: 1020px){ .menu{display:none} .menu-btn{display:inline-block} }
+
+/* pages */
+.page[hidden]{display:none!important}
+
+/* HERO */
+.hero{padding-top:clamp(20px,3vw,48px);padding-bottom:var(--sec)}
+.hero h1 span{display:block}
+.hero .grid{margin-top:clamp(24px,3vw,44px);align-items:start}
+.hero-photo{grid-column:1 / span 8;margin:0;overflow:hidden;aspect-ratio:16/10;background:var(--tone)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-side{grid-column:9 / span 4;display:grid;gap:28px;align-content:start}
+.board{background:var(--blue);color:#fff;padding:24px;display:grid;gap:14px}
+.board .st{display:flex;align-items:center;gap:10px;font-weight:700}
+.dot{width:12px;height:12px;border-radius:50%;background:#36D27A;flex:none}
+.dot.off{background:#8A8F99}
+.board .left{font-family:var(--display);font-size:var(--s-m);line-height:1;color:var(--yellow)}
+.board .tn{background:var(--blue-step);padding:14px 16px;display:grid;gap:6px}
+.board .tn b{font-weight:700}
+.credit{margin-top:10px;font-size:15px}
+
+/* partners band */
+.band{padding-block:28px}
+.band .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
+.band .pt{display:flex;align-items:center;gap:20px;text-decoration:none}
+.band .pt:hover span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.band .pt span{font-weight:600}
+.band img{height:44px;width:auto}
+
+/* statement */
+.figs{margin-top:clamp(56px,7vw,112px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
+.figs div{background:var(--blue-step);padding:24px;display:grid;gap:8px;align-content:start}
+.figs dt{font-family:var(--display);font-size:var(--s-l);line-height:.9;color:var(--yellow)}
+.figs dd{font-weight:500}
+
+/* split (league) */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:min(92vh,880px)}
+.split > *{min-width:0}
+.split figure{margin:0;overflow:hidden}
+.split figure img{width:100%;height:100%;object-fit:cover}
+.split .txt{padding:var(--sec) max(var(--gut), env(safe-area-inset-right,0px)) var(--sec) clamp(24px,5vw,88px);display:grid;gap:28px;align-content:center}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:12px 28px;max-width:560px}
+.facts dt{font-weight:700}
+.facts dd{font-weight:500}
+
+/* timetable */
+.tt{display:grid}
+.tt li{display:grid;grid-template-columns:minmax(120px,1.1fr) 2.4fr minmax(110px,.9fr);gap:var(--gap);align-items:baseline;padding:22px 20px;transition:background-color .2s ease}
+.tt li:nth-child(odd){background:var(--tone)}
+.tt li:hover{background:var(--yellow);color:var(--on-yellow)}
+.tt .dt{font-family:var(--display);text-transform:uppercase;font-size:var(--s-m);line-height:1}
+.tt .nm{font-weight:700;font-size:var(--s-lead);line-height:1.25}
+.tt .ds{display:block;font-weight:500;font-size:var(--s-body);margin-top:4px}
+.tt .sx{font-weight:700;text-align:right}
+.tt .sx.now{color:var(--blue)}
+.tt li:hover .sx.now{color:var(--on-yellow)}
+
+/* school offers */
+.offer{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center}
+.offer > *{min-width:0}
+.offer + .offer{margin-top:clamp(64px,8vw,140px)}
+.offer figure{margin:0;overflow:hidden;aspect-ratio:4/3;background:var(--ground)}
+.offer figure img{width:100%;height:100%;object-fit:cover}
+.offer .a{grid-column:1 / span 7}
+.offer .b{grid-column:9 / span 4;display:grid;gap:22px}
+.offer.r .a{grid-column:6 / span 7;grid-row:1}
+.offer.r .b{grid-column:1 / span 4;grid-row:1}
+.price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.price b{font-family:var(--display);font-size:var(--s-l);line-height:.9;font-weight:400}
+.meter{display:grid;gap:8px}
+.meter .track{height:14px;background:var(--ground)}
+.tone .meter .track{background:var(--ground)}
+.meter .fill{height:100%;background:var(--yellow);width:90%}
+.tag{display:inline-block;font-weight:700}
+.tag.closed{color:#B3261E}
+
+/* ranking */
+.ones{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,96px);margin-top:clamp(48px,6vw,96px)}
+.ones > *{min-width:0}
+.one{display:grid;gap:18px;align-content:start}
+.one .who{font-family:var(--display);text-transform:uppercase;font-size:var(--s-l);line-height:.9;color:var(--yellow)}
+.one .pts{font-weight:700;font-size:var(--s-lead)}
+.one ol{display:grid;gap:0;margin-top:10px}
+.one ol li{display:grid;grid-template-columns:2.2em 1fr auto;gap:12px;padding:12px 14px;font-weight:500}
+.one ol li:nth-child(odd){background:var(--night-step)}
+.one ol li span:last-child{font-weight:700}
+
+/* club */
+.club .ph{grid-column:1 / span 5;margin:0;overflow:hidden;aspect-ratio:3/4}
+.club .ph img{width:100%;height:100%;object-fit:cover}
+.club .tx{grid-column:7 / span 6;display:grid;gap:28px;align-content:center}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:24px var(--gap)}
+.roles h3{font-family:var(--display);text-transform:uppercase;font-size:var(--s-m);line-height:1;margin-bottom:6px}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--gap);margin-top:32px}
+.logos a{display:grid;place-items:center;background:#fff;aspect-ratio:16/9;padding:18px;transition:background-color .2s ease}
+.logos a:hover{background:var(--yellow)}
+.logos img{max-height:56px;width:auto;object-fit:contain}
+.logos a.dk{background:var(--ink)}
+:root[data-theme="dark"] .logos a.dk{background:#000}
+
+/* page heads */
+.phead{padding-top:clamp(28px,4vw,64px);padding-bottom:clamp(48px,6vw,96px);display:grid;gap:28px}
+.phead .lead{max-width:44ch}
+.wide{margin:0;overflow:hidden;aspect-ratio:21/9;background:var(--tone)}
+.wide img{width:100%;height:100%;object-fit:cover}
+
+/* two-column text sections */
+.cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.cols > *{min-width:0;align-self:start}
+.prose{align-content:start}
+.cols .h{grid-column:1 / span 5}
+.cols .c{grid-column:7 / span 6}
+.list-big{display:grid;gap:0}
+.list-big li{font-size:var(--s-lead);font-weight:600;line-height:1.3;padding:16px 0}
+.blue .list-big li:nth-child(odd){background:transparent}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--gap);margin-top:40px}
+.rules-grid li{font-size:var(--s-lead);font-weight:600;line-height:1.3;padding:18px 20px}
+.rules-grid li:nth-child(4n+1),.rules-grid li:nth-child(4n+2){background:var(--blue-step)}
+
+.dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}
+.dl div{background:var(--ground);padding:18px 20px}
+.tone .dl div{background:var(--ground)}
+.dl dt{font-weight:700}
+.dl dd{font-weight:500}
+.names{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:10px}
+.names li{font-family:var(--display);text-transform:uppercase;font-size:var(--s-m);line-height:1.1}
+
+/* forms */
+form{display:grid;gap:16px;max-width:640px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-weight:600}
+input,textarea,select{font:500 16px var(--text);color:var(--ink);background:var(--tone);border:0;border-radius:0;padding:14px 14px;min-height:50px;width:100%}
+.tone input,.tone textarea{background:var(--ground)}
+.yellow input,.yellow textarea,.blue input,.blue textarea{background:#fff;color:#111318}
+textarea{min-height:120px;resize:vertical}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+legend{font-weight:600;margin-bottom:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px 20px}
+.opts label{display:flex;align-items:center;gap:8px;font-weight:500}
+.opts input{width:20px;min-height:20px;height:20px;accent-color:var(--blue)}
+.note{font-weight:600;padding:14px 16px;background:var(--yellow);color:var(--on-yellow)}
+
+/* emails */
+.mails{display:grid;gap:2px}
+.mails div{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:var(--tone);padding:14px 18px}
+.mails b{display:block;font-weight:700;word-break:break-all}
+.mails span{font-weight:500}
+.copy{background:var(--ink);color:var(--ground);border:0;font:700 14px var(--text);min-height:40px;padding:0 14px;cursor:pointer}
+.copy:active{transform:translateY(1px)}
+
+/* posters */
+.posters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:40px}
+.posters figure{margin:0;display:grid;gap:10px;align-content:start}
+.posters figure:first-child{grid-column:span 2;grid-row:span 2}
+.posters img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .35s ease}
+.posters .pw{overflow:hidden}
+.posters figure:hover img{transform:scale(1.03)}
+.posters figcaption{font-weight:600}
+
+/* tabs + table */
+.tabs{display:flex;gap:8px;margin-top:36px}
+.tabs button{font:700 16px var(--text);min-height:48px;padding:0 22px;border:0;cursor:pointer;background:var(--tone);color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--blue);color:#fff}
+.tablewrap{overflow-x:auto;margin-top:16px}
+table{border-collapse:collapse;width:100%;min-width:420px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:700;padding:14px 18px;background:var(--ink);color:var(--ground)}
+td{padding:14px 18px;font-weight:500}
+tr:nth-child(even) td{background:var(--tone)}
+td:first-child,th:first-child{width:5em}
+td:last-child,th:last-child{text-align:right}
+tbody tr:first-child td{font-weight:700;background:var(--yellow);color:var(--on-yellow)}
+
+details{background:var(--tone)}
+details + details{margin-top:2px}
+summary{cursor:pointer;padding:18px 20px;font-weight:700;font-size:var(--s-lead);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:28px;line-height:1}
+details[open] summary::after{content:"–"}
+details .prose{padding:0 20px 24px}
+.jump{display:flex;flex-wrap:wrap;gap:12px}
+
+/* footer */
+.foot{padding-top:var(--sec);padding-bottom:40px}
+.foot .grid{margin-top:clamp(56px,7vw,112px)}
+.foot h3{font-weight:700;margin-bottom:12px}
+.foot ul{display:grid;gap:6px}
+.foot ul.site{display:block}
+.foot a{text-decoration:none}
+.foot a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.foot .c1{grid-column:1 / span 3}.foot .c2{grid-column:4 / span 3}.foot .c3{grid-column:7 / span 2}.foot .c4{grid-column:9 / span 4}
+.foot .site{columns:2;column-gap:var(--gap)}
+.foot .site li{break-inside:avoid;margin-bottom:6px}
+.foot .base{margin-top:72px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center;background:var(--blue-step);padding:18px 20px}
+.foot .base img{height:40px;width:auto}
+
+/* motion */
+@keyframes rise{from{transform:translateY(38%);opacity:0}to{transform:none;opacity:1}}
+@keyframes drift{from{transform:scale(1.0)}to{transform:scale(1.07) translateX(-1.5%)}}
+.hero h1 span{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.09s}
+.hero-photo img{animation:drift 22s ease-in-out infinite alternate}
+.pre{opacity:0;transform:translateY(24px)}
+.in{opacity:1;transform:none;transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .hero h1 span,.hero-photo img{animation:none}
+  .pre{opacity:1;transform:none}
+  .posters img,.btn,.btn .arr{transition:none}
+}
+
+/* responsive */
+@media (max-width: 1020px){
+  .grid > [style*="grid-column"]{grid-column:1 / -1 !important}
+  .hero-photo{grid-column:1 / -1}
+  .hero-side{grid-column:1 / -1;grid-template-columns:1fr 1fr;gap:var(--gap)}
+  .hero-side > .intro{grid-column:1 / -1}
+  .figs{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr;min-height:0}
+  .split figure{aspect-ratio:4/3}
+  .split .txt{padding:var(--sec) max(var(--gut), env(safe-area-inset-right,0px)) var(--sec) max(var(--gut), env(safe-area-inset-left,0px))}
+  .offer .a,.offer.r .a{grid-column:1 / -1;grid-row:auto}
+  .offer .b,.offer.r .b{grid-column:1 / -1;grid-row:auto}
+  .club .ph{grid-column:1 / -1;aspect-ratio:4/3}
+  .club .tx{grid-column:1 / -1}
+  .cols .h,.cols .c{grid-column:1 / -1}
+  .foot .c1,.foot .c2{grid-column:span 6}.foot .c3{grid-column:span 4}.foot .c4{grid-column:span 8}
+  .posters{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 680px){
+  :root{--s-xl:clamp(36px, 12.6vw, 120px)}
+  .hero-side{grid-template-columns:1fr}
+  .figs{grid-template-columns:1fr 1fr}
+  .figs div{padding:18px}
+  .ones{grid-template-columns:1fr}
+  .roles,.rules-grid,.dl,.fgrid{grid-template-columns:1fr}
+  .rules-grid li:nth-child(4n+1),.rules-grid li:nth-child(4n+2){background:transparent}
+  .rules-grid li:nth-child(odd){background:var(--blue-step)}
+  .tt li{grid-template-columns:1fr;gap:4px;padding:18px 16px}
+  .tt .sx{text-align:left}
+  .foot .c1,.foot .c2,.foot .c3,.foot .c4{grid-column:1 / -1}
+  .posters figure:first-child{grid-column:span 2;grid-row:auto}
+  .band img{height:36px}
+  .wide{aspect-ratio:4/3}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#home" data-nav aria-label="Beach Tennis Bonaire, home">
+      <img class="lg-d" src="btb-logo.png" alt="Beach Tennis Bonaire" width="700" height="410">
+      <img class="lg-l" src="btb-logo-white.png" alt="Beach Tennis Bonaire" width="700" height="410">
+    </a>
+    <nav aria-label="Main">
+      <ul class="menu">
+        <li><a href="#play" data-nav>Play</a>
+          <div class="sub"><a href="#play" data-nav>Play for free</a><a href="#rules-court" data-nav>Court rules</a><a href="#shop" data-nav>BTB shop</a></div></li>
+        <li><a href="#school" data-nav>BTB School</a>
+          <div class="sub"><a href="#school" data-nav>Training info</a><a href="#adults" data-nav>Adult training</a><a href="#youth" data-nav>Youth Academy</a></div></li>
+        <li><a href="#events" data-nav>Events</a>
+          <div class="sub"><a href="#events" data-nav>Coming up</a><a href="#season" data-nav>This season's posters</a><a href="#league" data-nav>League regulations</a><a href="#tournaments" data-nav>Tournament rules</a></div></li>
+        <li><a href="#ranking" data-nav>Ranking</a>
+          <div class="sub"><a href="#ranking-info" data-nav>Ranking info</a><a href="#players" data-nav>Player rankings</a><a href="#panam" data-nav>PanAm selection</a></div></li>
+        <li><a href="#club" data-nav>About BTB</a>
+          <div class="sub"><a href="#club" data-nav>About BTB</a><a href="#board" data-nav>The board</a><a href="#volunteers" data-nav>Volunteers</a><a href="#sponsoring" data-nav>Sponsoring</a><a href="#sponsors" data-nav>Sponsors</a></div></li>
+        <li><a class="btn" href="#contact" data-nav>Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" id="menuOpen" aria-expanded="false" aria-controls="drawer">Menu</button>
+  </div>
+</header>
+
+<div class="drawer wrap" id="drawer" hidden>
+  <div class="bar">
+    <img src="btb-logo-white.png" alt="Beach Tennis Bonaire" style="height:42px;width:auto">
+    <button class="close" type="button" id="menuClose">Close</button>
+  </div>
+  <nav aria-label="Mobile">
+    <div><h2><a href="#home" data-nav>Home</a></h2></div>
+    <div><h2><a href="#play" data-nav>Play</a></h2><ul><li><a href="#rules-court" data-nav>Court rules</a></li><li><a href="#shop" data-nav>BTB shop</a></li></ul></div>
+    <div><h2><a href="#school" data-nav>BTB School</a></h2><ul><li><a href="#adults" data-nav>Adult training</a></li><li><a href="#youth" data-nav>Youth Academy</a></li></ul></div>
+    <div><h2><a href="#events" data-nav>Events</a></h2><ul><li><a href="#season" data-nav>Posters</a></li><li><a href="#league" data-nav>League regulations</a></li><li><a href="#tournaments" data-nav>Tournament rules</a></li></ul></div>
+    <div><h2><a href="#ranking" data-nav>Ranking</a></h2><ul><li><a href="#players" data-nav>Player rankings</a></li><li><a href="#panam" data-nav>PanAm selection</a></li></ul></div>
+    <div><h2><a href="#club" data-nav>About BTB</a></h2><ul><li><a href="#board" data-nav>Board</a></li><li><a href="#volunteers" data-nav>Volunteers</a></li><li><a href="#sponsoring" data-nav>Sponsoring</a></li><li><a href="#sponsors" data-nav>Sponsors</a></li></ul></div>
+    <div><h2><a href="#contact" data-nav>Contact</a></h2></div>
+  </nav>
+</div>
+
+<main>
+<!-- ============================ HOME ============================ -->
+<div class="page" id="p-home" data-page="home">
+  <section class="hero wrap" id="home">
+    <h1 class="d-xl"><span>Play beach tennis</span><span>on Bonaire</span></h1>
+    <div class="grid">
+      <figure class="hero-photo">
+        <img src="dive-pair.jpg" alt="Two players lunge for a low ball on the sand court, spectators watching from the wooden bench, cacti behind the fence" width="1800" height="1076">
+      </figure>
+      <div class="hero-side">
+        <div class="intro" style="display:grid;gap:24px">
+          <p class="lead">Six courts at Sportpark Rudy Boezem in Kralendijk. Free for everyone, every day until 10 PM. No racket? Borrow one at the courts.</p>
+          <div class="btns">
+            <a class="btn" href="#play" data-nav>How to start <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn k" href="#events" data-nav>See events</a>
+          </div>
+        </div>
+        <div class="board" id="board-card" aria-live="polite">
+          <p class="st"><span class="dot" id="b-dot"></span><span id="b-status">Courts open every day until 10 PM</span></p>
+          <p class="left num" id="b-left">Free for everyone</p>
+          <p id="b-sub">Turn up, borrow a racket, rotate after each game.</p>
+          <div class="tn">
+            <b id="b-day">Today at the courts</b>
+            <ul id="b-today"><li>Open play</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night band">
+    <div class="wrap row">
+      <a class="pt" href="https://www.hangoutbeachbar.com/" target="_blank" rel="noopener"><span>Home court partner</span><img src="l-hangout.png" alt="Hang Out Beachbar" width="400" height="95"></a>
+      <a class="pt" href="https://www.tui.nl/" target="_blank" rel="noopener"><span>Premium sponsor</span><img src="l-tui.png" alt="TUI" width="274" height="120"></a>
+    </div>
+  </section>
+
+  <section class="blue sec">
+    <div class="wrap">
+      <div class="grid" style="align-items:end">
+        <h2 class="d-l y-text" style="grid-column:1 / span 7">Free. Gratis. Por nada.</h2>
+        <div style="grid-column:8 / span 5;display:grid;gap:24px" class="mcol">
+          <p class="lead">BTB keeps beach tennis free for everyone who lives on or visits Bonaire. Sponsors, volunteers and small tournament fees pay for the sand, nets, lines, lights and loan rackets.</p>
+          <a class="tlink" href="#rules-court" data-nav>Read the court rules</a>
+        </div>
+      </div>
+      <dl class="figs">
+        <div><dt class="num">6</dt><dd>permanent courts, with night lighting and shade</dd></div>
+        <div><dt>10 PM</dt><dd>lights out, every day of the week</dd></div>
+        <div><dt class="num">$0</dt><dd>to walk on and play, rackets and balls included</dd></div>
+        <div><dt class="num">2017</dt><dd>the year the official BTB ranking started</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="yellow split">
+    <figure><img src="handshake.jpg" alt="Two league players shake hands across the net after their match" width="1600" height="1480" loading="lazy"></figure>
+    <div class="txt">
+      <h2 class="d-l">Thursday is league night</h2>
+      <p class="lead">Doubles teams play one match a night in poules of six, from Open to Fun. The first matches start at 5 PM and the rest follow court by court.</p>
+      <dl class="facts">
+        <dt>Season</dt><dd>Oct 22 to Dec 16, 2026</dd>
+        <dt>Levels</dt><dd>Open, Advanced, Intermediate, Fun</dd>
+        <dt>Entry</dt><dd>$15 per player, paid on the first night</dd>
+        <dt>Finals</dt><dd>Wednesday Dec 16, finals night</dd>
+      </dl>
+      <div class="btns"><a class="btn k" href="#league" data-nav>League regulations <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="grid">
+      <div style="grid-column:1 / span 4;display:grid;gap:24px;align-content:start" class="mcol">
+        <h2 class="d-l">Coming up</h2>
+        <p>Tournaments, league nights and training rounds at the courts. Taking part in an event costs a small contribution.</p>
+        <a class="tlink" href="#events" data-nav>All events and posters</a>
+      </div>
+      <ol class="tt" style="grid-column:5 / span 8" data-tt></ol>
+    </div>
+  </section>
+
+  <section class="tone sec">
+    <div class="wrap">
+      <div class="grid" style="margin-bottom:clamp(48px,6vw,96px);align-items:end">
+        <h2 class="d-l" style="grid-column:1 / span 6">Learn to play</h2>
+        <p class="lead" style="grid-column:8 / span 5">BTB School trains kids and adults, from first rally to tournament level, on technique, tactics and physical condition.</p>
+      </div>
+      <div class="offer">
+        <figure class="a"><img src="youth.jpg" alt="A young player stretches for a forehand at the Youth Academy" width="1600" height="1459" loading="lazy"></figure>
+        <div class="b">
+          <h3 class="d-m">Youth Academy</h3>
+          <p>Ages 9 to 17. Mondays 5 to 6 PM and 6 to 7 PM, from October 26. Beginner, intermediate and advanced groups.</p>
+          <p class="price"><b class="num">$35</b><span>for 7 one-hour classes</span></p>
+          <div class="meter"><span class="strong">27 of 30 spots filled</span><div class="track"><div class="fill"></div></div></div>
+          <div class="btns"><a class="btn" href="#youth" data-nav>Register <span class="arr" aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+      <div class="offer r">
+        <figure class="a"><img src="ball-ready.jpg" alt="An adult player ready to serve, racket on her shoulder" width="1100" height="1494" loading="lazy" style="object-position:50% 30%"></figure>
+        <div class="b">
+          <h3 class="d-m">Adult training</h3>
+          <p>18 and over. Monday and Tuesday evenings, 7 to 8 PM and 8 to 9 PM, November 2 to December 15.</p>
+          <p class="price"><b class="num">$70</b><span>for 7 one-hour classes</span></p>
+          <p class="tag closed">This round is full. Registration is closed.</p>
+          <div class="btns"><a class="btn k" href="#adults" data-nav>Training details</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night sec">
+    <div class="wrap">
+      <div class="grid" style="align-items:end">
+        <h2 class="d-l" style="grid-column:1 / span 7">Top of the ranking</h2>
+        <p class="lead" style="grid-column:8 / span 5">Every ranking tournament and league result adds points. This is the BTB ranking for October 2026.</p>
+      </div>
+      <div class="ones" data-ones></div>
+      <div class="btns" style="margin-top:48px"><a class="btn y" href="#players" data-nav>Full top 10 <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="sec wrap club">
+    <div class="grid">
+      <figure class="ph"><img src="team-container.jpg" alt="A group of BTB players celebrating with a prize by the blue container" width="1000" height="1333" loading="lazy"></figure>
+      <div class="tx">
+        <h2 class="d-l">BTB runs on volunteers</h2>
+        <p class="lead">Players set up tournaments and look after the courts. We can use more hands.</p>
+        <div class="roles">
+          <div><h3>Photographer</h3><p>You own a good camera and know how to use it.</p></div>
+          <div><h3>Maintenance</h3><p>Handy with tools, for nets, lines, lights and fences.</p></div>
+          <div><h3>Tournaments</h3><p>Help set up and run BTB tournaments.</p></div>
+          <div><h3>Recruitment</h3><p>Good at finding sponsors who keep the courts free.</p></div>
+        </div>
+        <div class="btns"><a class="btn" href="#volunteers" data-nav>Sign up as a volunteer</a><a class="btn k" href="#sponsoring" data-nav>Sponsor BTB</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tone sec" style="padding-block:clamp(64px,7vw,120px)">
+    <div class="wrap">
+      <div class="grid" style="align-items:end">
+        <h2 class="d-m" style="grid-column:1 / span 6">They keep the courts free</h2>
+        <p style="grid-column:8 / span 5"><a class="tlink" href="#sponsors" data-nav>Meet our sponsors</a></p>
+      </div>
+      <div class="logos" data-logos></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ PLAY ============================ -->
+<div class="page" id="p-play" data-page="play" hidden>
+  <section class="wrap phead" id="play">
+    <h1 class="d-xl">Play for free</h1>
+    <p class="lead">Looking for a fun, social sport that is easy to learn? Everyone is welcome at BTB, from total beginners to seasoned players.</p>
+  </section>
+  <figure class="wide" style="margin:0"><img src="women-dive.jpg" alt="Two women dive for the ball, sand flying" width="1600" height="1306" style="object-position:50% 45%"></figure>
+  <section class="sec wrap">
+    <div class="cols">
+      <div class="h" style="display:grid;gap:24px;align-content:start">
+        <h2 class="d-l">Just turn up</h2>
+        <p class="lead">Grab a racket, meet new people and, most of all, have fun.</p>
+      </div>
+      <div class="c" style="display:grid;gap:40px">
+        <div><h3 class="d-m">Free courts</h3><p style="margin-top:10px">Our six professional courts at Sportpark Rudy Boezem are open every day until 10 PM and free to use. All we ask is that you follow the court rules, so the courts stay safe and fun for everyone.</p></div>
+        <div><h3 class="d-m">No gear? No problem.</h3><p style="margin-top:10px">Borrow rackets and balls directly from BTB. Ready to level up? We also sell rackets from the popular brands, and you can test them on our courts first.</p></div>
+        <div><h3 class="d-m">Find your level</h3><p style="margin-top:10px">Want to improve faster? BTB School runs training rounds for adults and a Youth Academy for ages 9 to 17. Want to compete? Join a league or a tournament.</p>
+          <div class="btns" style="margin-top:18px"><a class="btn" href="#school" data-nav>BTB School</a><a class="btn k" href="#events" data-nav>Events</a></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="blue sec" id="rules-court">
+    <div class="wrap">
+      <div class="grid" style="align-items:end">
+        <h2 class="d-l y-text" style="grid-column:1 / span 7">Court rules</h2>
+        <p class="lead" style="grid-column:8 / span 5">Use the facility for free when you follow these rules. Please point them out to each other when needed.</p>
+      </div>
+      <ul class="rules-grid">
+        <li>Beach tennis only.</li>
+        <li>Keep the beach clean.</li>
+        <li>Turn off the lights after playing.</li>
+        <li>Make sure everyone can play: rotate after each game.</li>
+        <li>Take good care of our nets, lines and lights.</li>
+        <li>Playing and entering the courts is at your own risk.</li>
+        <li>Kindly point these rules out to each other.</li>
+        <li class="y-text">Have fun!</li>
+      </ul>
+    </div>
+  </section>
+  <section class="sec wrap club" id="shop">
+    <div class="grid">
+      <figure class="ph"><img src="racket-man.jpg" alt="A player in a BTB shirt holds up a beach tennis racket" width="1200" height="1161" loading="lazy"></figure>
+      <div class="tx">
+        <h2 class="d-l">BTB shop</h2>
+        <p class="lead">Rackets from all the popular brands: Ocean Air, NOX, Heroe's and more.</p>
+        <p>Beginner, intermediate or advanced: we have a racket for your level. Test it on our courts before you buy. Looking for a new racket? Email us or send us a message.</p>
+        <div class="mails"><div><p><b>info@beachtennisbonaire.com</b><span>Rackets and gear</span></p><button class="copy" type="button" data-copy="info@beachtennisbonaire.com">Copy</button></div></div>
+        <div class="btns"><a class="btn" href="#contact" data-nav>Ask about rackets</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ SCHOOL ============================ -->
+<div class="page" id="p-school" data-page="school" hidden>
+  <section class="wrap phead" id="school">
+    <h1 class="d-xl">BTB School</h1>
+    <p class="lead">Beach tennis training for youth and adults. Beginner, intermediate or already at top level, our trainers help you improve your technique, tactics and physical condition.</p>
+    <div class="btns"><a class="btn" href="#adults" data-nav>Adult training</a><a class="btn k" href="#youth" data-nav>Youth Academy</a></div>
+  </section>
+  <figure class="wide" style="margin:0"><img src="net-pair.jpg" alt="A training rally at the net, trainer and student at full stretch" width="1600" height="1066"></figure>
+  <section class="sec wrap">
+    <div class="cols">
+      <div class="h"><h2 class="d-m">Good to know</h2></div>
+      <div class="c prose">
+        <p>By registering you agree with the <a class="tlink" href="https://beachtennisbonaire.com/wp-content/uploads/2025/08/Terms-and-conditions-BTB-school.pdf" target="_blank" rel="noopener">BTB School terms and conditions (PDF)</a>.</p>
+        <p>BTB composes the groups based on your experience and the number of registrations.</p>
+        <div class="mails">
+          <div><p><b>school@beachtennisbonaire.com</b><span>Adult training</span></p><button class="copy" type="button" data-copy="school@beachtennisbonaire.com">Copy</button></div>
+          <div><p><b>youth-academy@beachtennisbonaire.com</b><span>Youth Academy</span></p><button class="copy" type="button" data-copy="youth-academy@beachtennisbonaire.com">Copy</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tone sec" id="adults">
+    <div class="wrap">
+      <div class="grid" style="align-items:end;margin-bottom:48px">
+        <h2 class="d-l" style="grid-column:1 / span 7">Adult training</h2>
+        <p class="lead" style="grid-column:8 / span 5">You get enough personal attention to work on the parts of your game you want to grow. Courses for beginner, intermediate and advanced players.</p>
+      </div>
+      <div class="cols">
+        <div class="h" style="display:grid;gap:24px;align-content:start">
+          <p class="price"><b class="num">$70</b><span>for 7 one-hour classes, paid in advance by bank transfer</span></p>
+          <p class="tag closed">Registration closed. Sorry, this training round is full.</p>
+          <p><span class="strong">Trainers</span></p>
+          <ul class="names"><li>Danielle</li><li>Ted</li><li>Max</li><li>Laura</li><li>Susan</li></ul>
+        </div>
+        <div class="c" style="display:grid;gap:24px">
+          <dl class="dl">
+            <div><dt>Location</dt><dd>BTB courts, Sportpark Rudy Boezem</dd></div>
+            <div><dt>Age</dt><dd>18+</dd></div>
+            <div><dt>Days</dt><dd>Monday and Tuesday</dd></div>
+            <div><dt>Times</dt><dd>7 to 8 PM and 8 to 9 PM</dd></div>
+            <div><dt>Start</dt><dd>Monday Nov 2 and Tuesday Nov 3</dd></div>
+            <div><dt>End</dt><dd>Monday Dec 14 and Tuesday Dec 15</dd></div>
+          </dl>
+          <p>During the week of the Aruba Open (November 9 to 15) there will be training.</p>
+          <p>By participating you agree with the conditions in the <a class="tlink" href="https://beachtennisbonaire.com/wp-content/uploads/2019/12/Vrijwaring-aansprakelijkheid-en-aanvaarding-van-risico.pdf" target="_blank" rel="noopener">disclaimer of liability and risk acceptance (PDF)</a>.</p>
+          <p><span class="strong">Want to become a BTB trainer?</span> Contact the board or one of our trainers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="youth">
+    <div class="offer">
+      <figure class="a"><img src="youth.jpg" alt="A young player stretches for a forehand" width="1600" height="1459" loading="lazy"></figure>
+      <div class="b">
+        <h2 class="d-l">Youth Academy</h2>
+        <p>Since the end of 2025 BTB runs a Youth Academy for children aged 9 up to and including 17: the place for young athletes to explore beach tennis, build their skills and have fun in a safe, motivating setting.</p>
+      </div>
+    </div>
+    <div class="cols" style="margin-top:clamp(56px,7vw,112px)">
+      <div class="h" style="display:grid;gap:24px;align-content:start">
+        <p class="price"><b class="num">$35</b><span>for 7 one-hour classes, paid in advance</span></p>
+        <div class="meter"><span class="strong">27 of 30 spots filled</span><div class="track" style="background:var(--tone)"><div class="fill"></div></div></div>
+        <dl class="dl">
+          <div style="background:var(--tone)"><dt>Age</dt><dd>9 to 17 years</dd></div>
+          <div style="background:var(--tone)"><dt>Levels</dt><dd>Beginner, intermediate, advanced</dd></div>
+          <div style="background:var(--tone)"><dt>When</dt><dd>Mondays 5 to 6 PM and 6 to 7 PM</dd></div>
+          <div style="background:var(--tone)"><dt>Start</dt><dd>Monday October 26</dd></div>
+          <div style="background:var(--tone)"><dt>Last lesson</dt><dd>Monday December 7</dd></div>
+          <div style="background:var(--tone)"><dt>Kids tournament</dt><dd>Sunday morning December 13, details follow</dd></div>
+        </dl>
+        <p><span class="strong">Trainers</span></p>
+        <ul class="names"><li>Susan</li><li>Roosmarijn</li><li>Jos</li><li>Maarten</li><li>Celine</li><li>Noortje</li><li>Iggy</li></ul>
+      </div>
+      <div class="c" style="display:grid;gap:24px">
+        <h3 class="d-m">Register</h3>
+        <p>After registering you receive an email with BTB's payment details. Your payment confirms the spot.</p>
+        <form data-form="Youth Academy registration">
+          <div class="fgrid">
+            <label for="y-name">Name<input id="y-name" name="name" required autocomplete="name"></label>
+            <label for="y-email">Email<input id="y-email" name="email" type="email" required autocomplete="email"></label>
+            <label for="y-phone">Phone<input id="y-phone" name="phone" type="tel" required autocomplete="tel"></label>
+            <label for="y-age">Age<input id="y-age" name="age" type="number" min="9" max="17" required></label>
+            <label for="y-dob">Date of birth<input id="y-dob" name="dob" type="date" required></label>
+          </div>
+          <fieldset><legend>Experience</legend><div class="opts">
+            <label for="y-x1"><input id="y-x1" type="radio" name="exp" value="Beginner" required>Beginner</label>
+            <label for="y-x2"><input id="y-x2" type="radio" name="exp" value="Intermediate">Intermediate</label>
+            <label for="y-x3"><input id="y-x3" type="radio" name="exp" value="Advanced">Advanced</label></div></fieldset>
+          <fieldset><legend>Taken beach tennis lessons with us before?</legend><div class="opts">
+            <label for="y-b1"><input id="y-b1" type="radio" name="before" value="Yes" required>Yes</label>
+            <label for="y-b2"><input id="y-b2" type="radio" name="before" value="No">No</label></div></fieldset>
+          <label for="y-msg">Message<textarea id="y-msg" name="message"></textarea></label>
+          <div class="opts"><label for="y-terms"><input id="y-terms" type="checkbox" required>I agree to the terms</label></div>
+          <div class="btns"><button class="btn" type="submit">Send registration</button></div>
+          <p class="note" hidden data-note></p>
+        </form>
+        <div class="prose" style="margin-top:12px">
+          <p>BTB is responsible during training hours only. Before and after, BTB does not supervise the children, so please drop off and pick up on time.</p>
+          <p>BTB is not liable for injuries or accidents during the sessions. Participation is at the player's own risk. See the <a class="tlink" href="https://beachtennisbonaire.com/wp-content/uploads/2019/12/Vrijwaring-aansprakelijkheid-en-aanvaarding-van-risico.pdf" target="_blank" rel="noopener">disclaimer (PDF)</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="yellow sec" style="padding-block:clamp(56px,6vw,96px)">
+    <div class="wrap grid" style="align-items:center">
+      <h2 class="d-m" style="grid-column:1 / span 7">Looking for a new racket?</h2>
+      <div style="grid-column:8 / span 5;display:grid;gap:18px"><p>Rackets from all the popular brands, for sale at BTB. Test them on our courts.</p><div class="btns"><a class="btn k" href="#shop" data-nav>BTB shop</a></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ EVENTS ============================ -->
+<div class="page" id="p-events" data-page="events" hidden>
+  <section class="wrap phead" id="events">
+    <h1 class="d-xl">Events</h1>
+    <p class="lead">BTB organises tournaments, competitions, trainings and other beach tennis activities every month. Taking part costs a small contribution.</p>
+  </section>
+  <section class="wrap" style="padding-bottom:var(--sec)">
+    <ol class="tt" data-tt></ol>
+    <div class="mails" style="margin-top:32px;max-width:720px">
+      <div><p><b>tournament@beachtennisbonaire.com</b><span>Tournament questions and registration</span></p><button class="copy" type="button" data-copy="tournament@beachtennisbonaire.com">Copy</button></div>
+      <div><p><b>league@beachtennisbonaire.com</b><span>League questions</span></p><button class="copy" type="button" data-copy="league@beachtennisbonaire.com">Copy</button></div>
+    </div>
+  </section>
+  <section class="yellow split">
+    <figure><img src="crowd-women.jpg" alt="A packed bench cheers a women's doubles point" width="1600" height="1286" loading="lazy"></figure>
+    <div class="txt">
+      <h2 class="d-l">Thursday is league night</h2>
+      <p class="lead">Seven courts are reserved for league matches on Thursday evenings. Be at the court 30 minutes before your match.</p>
+      <dl class="facts">
+        <dt>Season</dt><dd>Oct 22 to Dec 16, 2026</dd>
+        <dt>Format</dt><dd>Poules of six, best of three sets, super tiebreak at 1–1</dd>
+        <dt>Entry</dt><dd>$15 per player</dd>
+        <dt>Finals</dt><dd>Wednesday Dec 16</dd>
+      </dl>
+      <div class="btns"><a class="btn k" href="#league" data-nav>League regulations</a></div>
+    </div>
+  </section>
+  <section class="sec wrap" id="season">
+    <div class="grid" style="align-items:end">
+      <h2 class="d-l" style="grid-column:1 / span 7">This season</h2>
+      <p class="lead" style="grid-column:8 / span 5">Every BTB event gets its own poster. Here is 2026 so far.</p>
+    </div>
+    <div class="posters" data-posters></div>
+  </section>
+</div>
+
+<!-- ============================ RANKING ============================ -->
+<div class="page" id="p-ranking" data-page="ranking" hidden>
+  <section class="wrap phead" id="ranking">
+    <h1 class="d-xl">Ranking</h1>
+    <p class="lead">BTB started an official ranking in 2017 to keep players motivated. Everyone who plays a ranking tournament lands on the list automatically.</p>
+  </section>
+  <section class="night sec">
+    <div class="wrap">
+      <h2 class="d-l">Number ones</h2>
+      <div class="ones" data-ones></div>
+    </div>
+  </section>
+  <section class="sec wrap" id="players">
+    <div class="grid" style="align-items:end">
+      <h2 class="d-l" style="grid-column:1 / span 7">Current top 10</h2>
+      <p class="lead" style="grid-column:8 / span 5">Ranking of October 2026. Full results per player are in the PDF lists.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Ranking list">
+      <button type="button" role="tab" id="t-w" aria-selected="true" aria-controls="r-table">Women</button>
+      <button type="button" role="tab" id="t-m" aria-selected="false" aria-controls="r-table">Men</button>
+    </div>
+    <div class="tablewrap" id="r-table" role="tabpanel"></div>
+    <div class="btns" style="margin-top:24px">
+      <a class="btn" href="https://beachtennisbonaire.com/wp-content/uploads/2026/10/Ranking-spreadsheet-oktober-2026.xlsx-Dames.pdf" target="_blank" rel="noopener">All results: women (PDF)</a>
+      <a class="btn k" href="https://beachtennisbonaire.com/wp-content/uploads/2026/10/Ranking-spreadsheet-oktober-2026.xlsx-Heren.pdf" target="_blank" rel="noopener">All results: men (PDF)</a>
+    </div>
+  </section>
+  <section class="tone sec" id="ranking-info">
+    <div class="wrap cols">
+      <div class="h"><h2 class="d-l">How it works</h2></div>
+      <div class="c prose">
+        <p class="lead">Points come from ranking tournaments and from the league.</p>
+        <p>All participants in ranking tournaments are placed on the BTB ranking list automatically. League results also count towards the Bonaire Ranking System; the points per round are set out in the league regulations.</p>
+        <p>The national doubles ranking also decides who represents Bonaire at the Pan American Championships 2026.</p>
+        <div class="btns"><a class="btn" href="#league" data-nav>League regulations</a><a class="btn k" href="#panam" data-nav>PanAm selection</a></div>
+      </div>
+    </div>
+  </section>
+  <section class="yellow sec" style="padding-block:clamp(56px,6vw,96px)">
+    <div class="wrap grid" style="align-items:center">
+      <h2 class="d-m" style="grid-column:1 / span 7">Want to climb the list?</h2>
+      <div style="grid-column:8 / span 5;display:grid;gap:18px"><p>Play our upcoming tournaments. Check the events page for dates.</p><div class="btns"><a class="btn k" href="#events" data-nav>Events</a></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ RULES ============================ -->
+<div class="page" id="p-rules" data-page="rules" hidden>
+  <section class="wrap phead">
+    <h1 class="d-xl">Rules &amp; regs</h1>
+    <p class="lead">How the league, the tournaments and the PanAm selection work.</p>
+    <div class="jump"><a class="btn" href="#league" data-nav>League</a><a class="btn" href="#tournaments" data-nav>Tournaments</a><a class="btn" href="#panam" data-nav>PanAm 2026</a></div>
+  </section>
+
+  <section class="tone sec" id="league">
+    <div class="wrap cols">
+      <div class="h" style="display:grid;gap:20px;align-content:start"><h2 class="d-l">League regulations 2026</h2><p>Questions about the league: <b>league@beachtennisbonaire.com</b></p></div>
+      <div class="c prose">
+        <h3>General information</h3>
+        <p>Participation in the league costs $15 per player, paid on the first competition evening.</p>
+        <p>On Thursday evenings, seven courts are reserved for league matches.</p>
+        <h3>Registration</h3>
+        <ul><li>Teams can register in the levels Open, Advanced, Intermediate and Fun.</li><li>Each poule consists of six teams. For some levels two poules may be formed.</li><li>Placement in poules is based on the combined individual ranking of both players.</li><li>If necessary, a seventh team may be added to a poule.</li></ul>
+        <h3>Format</h3>
+        <ul><li>Each team plays one match against every other team in their poule.</li><li>Teams play one match per competition evening, occasionally two.</li><li>Matches are best of three sets. At 1–1, the third set is a super tiebreak.</li></ul>
+        <h3>Competition evenings</h3>
+        <ul><li>Matches follow the “followed by” principle. The first matches start at 5:00 PM; the next match on a court starts as soon as the previous one ends.</li><li>All times are approximate. Teams must be ready to play to avoid delays.</li><li>Teams must be at the court at least 30 minutes before their scheduled start.</li><li>A team not present within 10 minutes after the court becomes available loses the first set 6–3.</li><li>A team not present within 15 minutes after the court becomes available loses the match 6–3, 6–3.</li></ul>
+        <h3>Unable to play</h3>
+        <ul><li>Teams are expected on all competition evenings. At registration, each team may name one date on which they cannot play.</li><li>The final league day is excluded: attendance is required for semifinals and finals.</li><li>Each team may reschedule one match on its own initiative by finding an open slot and agreeing it with the opponents. Always tell the League Officials.</li><li>A rescheduling request must be made before 10:00 PM on the day before the match. After that, the result is recorded as 6–3, 6–3.</li><li>If no replacement date is found, the result is recorded as 6–3, 6–3.</li><li>Teams may use a substitute at most twice per season. The substitute must be of the same or a lower level and may not be registered in another team.</li><li>Opponents may refuse to play a substitute and ask to reschedule to a date when the original player is available.</li><li>With long-term injury or another external reason, a permanent substitute of the same or lower level may finish the season, approved by the League Officials and not registered in another team.</li></ul>
+        <h3>Scoring</h3>
+        <p>League standings are determined by, in order:</p>
+        <ul><li>Number of matches won</li><li>Sets won minus sets lost</li><li>Games won minus games lost</li><li>Head-to-head results</li></ul>
+        <h3>Ranking points</h3>
+        <p>League results count towards the Bonaire Ranking System.</p>
+        <h3>Finals</h3>
+        <ul><li>For levels with two poules, semifinals and finals are played on the final league day between the #1 and #2 of each poule.</li><li>Quarterfinals are not played. The #3 and #4 of each poule receive quarterfinalist points.</li><li>For levels with one poule there are no finals. The final standings decide the points.</li></ul>
+        <h3>Final note</h3>
+        <p>Beach Tennis Bonaire and the League Officials have the final say in any ruling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blue sec" id="tournaments">
+    <div class="wrap cols">
+      <div class="h"><h2 class="d-l y-text">Tournament rules</h2></div>
+      <div class="c" style="display:grid;gap:20px;align-content:center"><p class="lead">The tournament rules and regulations will be published as soon as possible.</p><p>Questions in the meantime: <b>tournament@beachtennisbonaire.com</b></p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="panam">
+    <div class="cols">
+      <div class="h" style="display:grid;gap:20px;align-content:start">
+        <h2 class="d-l">PanAm selection 2026</h2>
+        <p class="lead">How BTB selects the players who represent Bonaire at the Pan American Championships 2026.</p>
+        <div class="btns"><a class="btn" href="https://beachtennisbonaire.com/wp-content/uploads/2026/08/BTB_PanAm_Ranking_V_AUG_26.pdf" target="_blank" rel="noopener">Standings: women (PDF)</a><a class="btn k" href="https://beachtennisbonaire.com/wp-content/uploads/2026/08/BTB_PanAm_Ranking_M_AUG_26.pdf" target="_blank" rel="noopener">Standings: men (PDF)</a></div>
+      </div>
+      <div class="c">
+        <details open><summary>1. Objective</summary><div class="prose">
+          <p>1.1 This policy sets out the procedure for selecting and qualifying the players who will represent Bonaire at the Pan American Championships 2026 (PanAm). It aims for a fair, transparent and performance-based selection.</p>
+          <p>1.2 This policy is final and binding and applies only to the selection for the Pan American Championships of 2026.</p>
+          <p>1.3 This policy is carried out by the BTB board.</p></div></details>
+        <details><summary>2. Selection period</summary><div class="prose">
+          <p>2.1 The qualification period for all players runs from July 1, 2025 to July 1, 2026.</p>
+          <p>2.2 At the end of this period, the board announces the selection.</p></div></details>
+        <details><summary>3. Selection criteria</summary><div class="prose">
+          <p>3.1 Selection is based only on the official national doubles ranking. The four highest-ranked female doubles players and the four highest-ranked male doubles players are selected. Only doubles results count; points from mixed doubles and singles do not.</p>
+          <p>3.2 If two or more players have the same number of points at the end of the period, these tiebreaks apply in order:</p>
+          <ol><li>Best result in a recognised BTB tournament (highest round reached at the highest tournament level).</li><li>Head-to-head results between the tied players during the qualification period, if any.</li><li>Number of tournaments played during the qualification period.</li><li>Decision by the BTB board, in consultation with the parties involved.</li></ol></div></details>
+        <details><summary>4. Requirements for players</summary><div class="prose">
+          <p>4.1 Besides the performance criteria, players must meet these formal requirements:</p>
+          <ul><li>Resided on Bonaire for at least one year at the time of selection.</li><li>A valid Sedula (ID) of Bonaire.</li><li>A valid passport.</li><li>Registered under the Bonairean flag with the ITF no later than August 1, 2026.</li><li>Comply with the vaccination requirements and recommendations for travel to the host country, as set out by the GGD. Show proof of the vaccinations or of an appointment before departure.</li><li>Accept to cover all costs of taking part, including travel and accommodation, unless BTB or another authorised body provides support.</li><li>Submit official documentation confirming availability within 15 days of selection.</li></ul>
+          <p>4.2 Selected players are expected to:</p>
+          <ul><li>Represent the Beach Tennis Association in a sporting, professional and respectful way.</li><li>Take part in all official training sessions, team activities, meetings, media moments and other official events set by the board.</li><li>Comply with the rules of the association, the national federation and the championship organisers.</li><li>Have valid travel documents, visas and other required papers on time, unless the board says otherwise.</li></ul></div></details>
+        <details><summary>5. Team composition</summary><div class="prose">
+          <p>5.1 At most two men's doubles teams, two women's doubles teams and two mixed doubles teams may represent Bonaire.</p>
+          <p>5.2 The qualified players may decide together which two players form the first team and which the second, for both doubles and mixed doubles.</p>
+          <p>5.3 If they cannot agree, the BTB board makes the final decision.</p>
+          <p>5.4 Each National Association may enter at most 2 men's, 2 women's and 2 mixed doubles teams (the host nation may enter one extra team per event). A squad has up to 4 male and 4 female players. Only players in the men's or women's doubles may play mixed doubles. Players are nominated by their National Association and must be eligible to represent that nation. Each nation names a captain, playing or non-playing, who is responsible on site.</p></div></details>
+        <details><summary>6. Confirmation of participation</summary><div class="prose">
+          <p>6.1 Selected players confirm within 15 days of the announcement with the form "BTB Registration Form: Selected Player Pan American Championships 2026", meet all formal requirements and provide the documents.</p>
+          <p>6.2 Without timely confirmation, or if a player declines or does not meet the requirements, the spot goes to the next eligible player on the ranking, down to the 10th ranked player.</p></div></details>
+        <details><summary>7. Exceptions</summary><div class="prose">
+          <p>7.1 In exceptional cases such as injury or force majeure, the BTB board may appoint a replacement, within or outside the ranking order, in consultation.</p>
+          <p>7.2 In serious personal circumstances, such as the death of a close family member or serious illness, the board may deviate from the procedure in consultation with the player.</p>
+          <p>7.3 If a highly ranked player is suspended, behaves inappropriately or breaks the BTB or ITF code of conduct, the board may exclude that player from selection, whatever their ranking.</p>
+          <p>7.4 In all these cases the board makes a well-considered decision in consultation with the parties involved, documents it with reasons and communicates it in writing.</p></div></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ CLUB ============================ -->
+<div class="page" id="p-club" data-page="club" hidden>
+  <section class="wrap phead" id="club">
+    <h1 class="d-xl">About BTB</h1>
+    <p class="lead">Beach Tennis Bonaire is the driving force behind the island's liveliest sports community. Our mission: everyone who lives on or visits Bonaire can play this fast, spectacular sport every day, free of charge.</p>
+  </section>
+  <figure class="wide" style="margin:0"><img src="bar-crowd.jpg" alt="Players and spectators fill the courts and the terrace during a tournament" width="1200" height="682"></figure>
+  <section class="sec wrap">
+    <div class="cols">
+      <div class="h" style="display:grid;gap:24px;align-content:start">
+        <h2 class="d-l">Six courts, kept right</h2>
+        <p>BTB works to boost well-being and social connection across the island with a professional venue where people meet and stay active.</p>
+      </div>
+      <div class="c" style="display:grid;gap:40px">
+        <p class="lead">Six permanent courts with high-quality sand and professional boundary lines, night lighting for evening matches, shaded areas for players and spectators, and secure court enclosures. We keep improving them.</p>
+        <div><h3 class="d-m">Events</h3><p style="margin-top:10px">Monthly tournaments, competitions, trainings and other beach tennis activities. Players pay a small contribution to take part.</p></div>
+        <div><h3 class="d-m">Ranking</h3><p style="margin-top:10px">An official ranking since 2017. Everyone who plays a ranking tournament is placed on the list. <a class="tlink" href="#players" data-nav>See the rankings</a></p></div>
+        <div><h3 class="d-m">Training company</h3><p style="margin-top:10px">On July 9, 2020, ROA recognised the foundation as an official training company. MBO students of Sport &amp; Bewegen, levels 2, 3 and 4, can do their internship at BTB. Interested? Email <b>info@beachtennisbonaire.com</b>.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="night sec" id="board">
+    <div class="wrap cols">
+      <div class="h"><h2 class="d-l">The board</h2></div>
+      <div class="c"><ul class="names" style="gap:10px 36px"><li class="y-text">Fritszgerald</li><li>Corné</li><li>Susan</li><li>Debby</li><li>Carlin</li><li>Chris</li></ul></div>
+    </div>
+  </section>
+  <section class="sec wrap club" id="volunteers">
+    <div class="grid">
+      <figure class="ph"><img src="balletjes.jpg" alt="Two players in matching Beach Balletjes shirts" width="1200" height="1524" loading="lazy"></figure>
+      <div class="tx">
+        <h2 class="d-l">Volunteers</h2>
+        <p class="lead">BTB cannot exist without its volunteers.</p>
+        <p>Enthusiastic players regularly help set up tournaments and maintain the courts. But we can use hands in many more areas. Want to put your skills and love for the sport into making beach tennis on Bonaire even better? Sign up.</p>
+        <div class="roles">
+          <div><h3>Photographer</h3><p>A good camera and photo skills.</p></div>
+          <div><h3>Maintenance</h3><p>Keeping the courts in shape, handy with tools.</p></div>
+          <div><h3>Tournaments</h3><p>Helping and setting up BTB tournaments.</p></div>
+          <div><h3>Recruitment</h3><p>An expert in finding sponsors.</p></div>
+        </div>
+        <form data-form="Volunteer sign-up">
+          <div class="fgrid">
+            <label for="v-name">Name<input id="v-name" name="name" required autocomplete="name"></label>
+            <label for="v-email">Email<input id="v-email" name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label for="v-msg">How would you like to help?<textarea id="v-msg" name="message"></textarea></label>
+          <div class="btns"><button class="btn" type="submit">Sign up as a volunteer</button></div>
+          <p class="note" hidden data-note></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="yellow sec" id="sponsoring">
+    <div class="wrap">
+      <div class="grid" style="align-items:end">
+        <h2 class="d-l" style="grid-column:1 / span 7">The fastest growing sport on the island</h2>
+        <p class="lead" style="grid-column:8 / span 5">Want to jump on the wagon? Support BTB and grow your visibility at the same time.</p>
+      </div>
+      <div class="cols" style="margin-top:clamp(48px,6vw,96px)">
+        <div class="h prose">
+          <p>BTB runs under Stichting Sport Promotie Bonaire, the Foundation for Sport Promotion on Bonaire. Its aim: keep beach tennis accessible for every inhabitant and visitor of Bonaire, preferably free, gratis, por nada.</p>
+          <p>To do that while the sport keeps growing, the foundation depends entirely on fundraising, sponsoring and small contributions from tournament players. Every dollar goes to that goal: loan rackets and balls, nets, lines, lights, fences, sun shades, a terrace and, not to forget, sand.</p>
+        </div>
+        <div class="c" style="display:grid;gap:28px">
+          <dl class="facts" style="max-width:none">
+            <dt>Monthly</dt><dd>tournaments, competitions and trainings</dd>
+            <dt>Weekly</dt><dd>a large group of regulars who play several times a week</dd>
+            <dt>6 courts</dt><dd>permanent, at Sportpark Rudy Boezem</dd>
+            <dt>2.1K+</dt><dd>followers on Facebook and Instagram, from Bonaire, Aruba and Curaçao to Europe, the USA and Brazil</dd>
+          </dl>
+          <p class="strong">From standard to custom: ask about our standard packages, or contact us for non-binding information about a custom option.</p>
+          <form data-form="Sponsoring enquiry">
+            <div class="fgrid">
+              <label for="s-name">Name<input id="s-name" name="name" required autocomplete="name"></label>
+              <label for="s-email">Email<input id="s-email" name="email" type="email" required autocomplete="email"></label>
+            </div>
+            <label for="s-sub">Subject<input id="s-sub" name="subject"></label>
+            <label for="s-msg">Message<textarea id="s-msg" name="message"></textarea></label>
+            <div class="btns"><button class="btn k" type="submit">Ask about sponsoring</button></div>
+            <p class="note" hidden data-note style="background:#fff"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec wrap" id="sponsors">
+    <div class="cols">
+      <div class="h" style="display:grid;gap:24px;align-content:start">
+        <h2 class="d-l">Sponsors</h2>
+        <p class="lead">Home court partner: The Hang Out Beachbar.</p>
+      </div>
+      <div class="c" style="display:grid;gap:24px">
+        <p>The Hang Out Beachbar has grown into a thriving place to be. A well-stocked bar, a brand-new open kitchen with sandwiches, salads and chef's specials, comfortable beach beds and lounges, and the everlasting service with a smile: this is where you live the true relaxed Caribbean lifestyle. Enjoy the food, drinks and atmosphere, go surfing or relax at the beach, and check their event schedule.</p>
+        <div class="btns"><a class="btn" href="https://www.hangoutbeachbar.com/" target="_blank" rel="noopener">Visit Hang Out Beachbar</a></div>
+      </div>
+    </div>
+    <h3 class="d-m" style="margin-top:clamp(56px,7vw,112px)">Premium sponsor and sponsors</h3>
+    <div class="logos" data-logos></div>
+    <div class="btns" style="margin-top:32px"><a class="btn" href="#sponsoring" data-nav>Sponsor us</a></div>
+  </section>
+</div>
+
+<!-- ============================ CONTACT ============================ -->
+<div class="page" id="p-contact" data-page="contact" hidden>
+  <section class="wrap phead" id="contact">
+    <h1 class="d-xl">Contact</h1>
+    <p class="lead">Mail the right team directly, or use the form. You find us at Sportpark Rudy Boezem in Kralendijk.</p>
+  </section>
+  <section class="wrap" style="padding-bottom:var(--sec)">
+    <div class="cols">
+      <div class="h" style="display:grid;gap:28px;align-content:start">
+        <div class="mails">
+          <div><p><b>info@beachtennisbonaire.com</b><span>General questions</span></p><button class="copy" type="button" data-copy="info@beachtennisbonaire.com">Copy</button></div>
+          <div><p><b>league@beachtennisbonaire.com</b><span>League questions</span></p><button class="copy" type="button" data-copy="league@beachtennisbonaire.com">Copy</button></div>
+          <div><p><b>school@beachtennisbonaire.com</b><span>Training questions</span></p><button class="copy" type="button" data-copy="school@beachtennisbonaire.com">Copy</button></div>
+          <div><p><b>tournament@beachtennisbonaire.com</b><span>Tournament questions</span></p><button class="copy" type="button" data-copy="tournament@beachtennisbonaire.com">Copy</button></div>
+          <div><p><b>youth-academy@beachtennisbonaire.com</b><span>Youth Academy</span></p><button class="copy" type="button" data-copy="youth-academy@beachtennisbonaire.com">Copy</button></div>
+        </div>
+        <div class="board">
+          <p class="left">Sportpark Rudy Boezem</p>
+          <p>Kralendijk, Bonaire. Plus code 5PGC+W8H. Courts open every day until 10 PM.</p>
+          <div class="btns"><a class="btn y" href="https://www.google.com/maps?q=5PGC%2BW8H%2C%20Kralendijk%2C%20Caribbean%20Netherlands" target="_blank" rel="noopener">Open in Google Maps</a></div>
+        </div>
+      </div>
+      <div class="c">
+        <form data-form="Contact form">
+          <div class="fgrid">
+            <label for="c-name">Your name<input id="c-name" name="name" required autocomplete="name"></label>
+            <label for="c-email">Your email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label for="c-sub">Subject<input id="c-sub" name="subject"></label>
+          <label for="c-msg">Your message<textarea id="c-msg" name="message" required></textarea></label>
+          <div class="btns"><button class="btn" type="submit">Send message</button></div>
+          <p class="note" hidden data-note></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="blue foot">
+  <div class="wrap">
+    <p class="d-xl" aria-hidden="true">See you<br>on the sand</p>
+    <div class="grid">
+      <div class="c1"><h3>Visit</h3><ul><li>Sportpark Rudy Boezem</li><li>Kralendijk, Bonaire</li><li>Courts open every day until 10 PM</li><li><a class="tlink" href="https://www.google.com/maps?q=5PGC%2BW8H%2C%20Kralendijk%2C%20Caribbean%20Netherlands" target="_blank" rel="noopener">Directions</a></li></ul></div>
+      <div class="c2"><h3>Email</h3><ul><li>info@beachtennisbonaire.com</li><li>league@beachtennisbonaire.com</li><li>school@beachtennisbonaire.com</li><li>tournament@beachtennisbonaire.com</li></ul></div>
+      <div class="c3"><h3>Follow</h3><ul><li><a href="https://www.facebook.com/beachtennisbonaire" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/beachtennisbonaire/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      <div class="c4"><h3>Site</h3><ul class="site">
+        <li><a href="#home" data-nav>Home</a></li><li><a href="#club" data-nav>About BTB</a></li><li><a href="#play" data-nav>Play</a></li><li><a href="#volunteers" data-nav>Volunteers</a></li><li><a href="#sponsoring" data-nav>Sponsoring</a></li><li><a href="#sponsors" data-nav>Sponsors</a></li><li><a href="#school" data-nav>Training info</a></li><li><a href="#adults" data-nav>Adult training</a></li><li><a href="#youth" data-nav>Youth Academy</a></li><li><a href="#events" data-nav>Events</a></li><li><a href="#ranking-info" data-nav>Ranking info</a></li><li><a href="#players" data-nav>Player rankings</a></li><li><a href="#league" data-nav>League rules</a></li><li><a href="#tournaments" data-nav>Tournament rules</a></li><li><a href="#panam" data-nav>PanAm selection</a></li><li><a href="#shop" data-nav>BTB shop</a></li><li><a href="#contact" data-nav>Contact</a></li></ul></div>
+    </div>
+    <div class="base">
+      <img src="btb-logo-white.png" alt="Beach Tennis Bonaire" width="700" height="410">
+      <p>© 2026 Beach Tennis Bonaire · Stichting Sport Promotie Bonaire</p>
+      <p>Pictures: <a class="tlink" href="https://www.facebook.com/avandorsten" target="_blank" rel="noopener">Arjen Van Dorsten</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- data ---------- */
+  var RANK = {
+    w:[["Inge Vos",459],["Susan Wolters",419],["Carlin ten Hoeve",373],["Demi Knapen",325],["Ivanka Puik",224],["Laura Dek",219],["Celine van Loe",194],["Steffie Janshen",181],["Julia Mattaar",131],["Mylene de Vries",129]],
+    m:[["Fritszgerald Lomp",538],["Darvick Anthony",414],["Tim Eikholt",384],["Joeri van Bon",337],["Sigrel Burnet",334],["Xammar Saragoza",230],["Ryan Richardson",229],["Maurison Martines",175],["Giovanni Ortela",171],["Paul Joven",147]]
+  };
+  var EVENTS = [
+    {d:"Oct 23–24", s:"2026-10-23", e:"2026-10-24", n:"Hang Out Doubles Tournament", x:"All levels, limited spots. Register via tournament@"},
+    {d:"Oct 26", s:"2026-10-26", e:"2026-12-07", n:"Youth Academy starts", x:"Mondays 5–7 PM, ages 9 to 17. 3 spots left", kind:"run"},
+    {d:"Nov 2–3", s:"2026-11-02", e:"2026-12-15", n:"Adult training starts", x:"Monday and Tuesday 7–9 PM. This round is full", kind:"run"},
+    {d:"Thursdays", s:"2026-10-22", e:"2026-12-10", n:"Doubles League", x:"League night from 5 PM, every Thursday", kind:"weekly", wd:4},
+    {d:"Dec 13", s:"2026-12-13", e:"2026-12-13", n:"Kids tournament", x:"Sunday morning, after the last Youth Academy lesson. Details follow"},
+    {d:"Dec 16", s:"2026-12-16", e:"2026-12-16", n:"League finals night", x:"Semifinals and finals of the Doubles League, Wednesday"}
+  ];
+  var POSTERS = [
+    ["p-hangout-doubles.jpg","Hang Out Doubles Tournament, Oct 23–24"],
+    ["p-doubles-league.jpg","BTB Doubles League, Oct 22 – Dec 16"],
+    ["p-mixed-sep.jpg","Mixed Doubles Tournament, Sep 18–19"],
+    ["p-team-cup.jpg","Team Cup Tournament, Aug 29"],
+    ["p-mixed-league.jpg","Mixed League, from Aug 27"],
+    ["p-finals-night.jpg","League Finals Night, Jun 11"],
+    ["p-mixed-may.jpg","Mixed Doubles Tournament, May 8–9"],
+    ["p-king-queen.jpg","King & Queen of the Court, Apr 27"],
+    ["p-racket-night.jpg","Racket Night, Apr 11"]
+  ];
+  var LOGOS = [
+    ["l-tui.png","TUI","https://www.tui.nl/"],
+    ["l-hangout.png","Hang Out Beachbar","https://www.hangoutbeachbar.com/","dk"],
+    ["l-sunwise.png","Sunwise Bonaire","https://sunwisebonaire.com"],
+    ["l-amstel.png","Amstel Bright","https://www.instagram.com/amstelbrightofficial/"],
+    ["l-akkermans.png","Akkermans Auto Supplies",""],
+    ["l-crooij.png","Crooij & Flipse","https://cfverzekeringen.com/"],
+    ["l-jaro.png","Jaro Impex","https://www.facebook.com/jaroimpexbonaire/"],
+    ["l-luciano.png","Luciano Ice Cream Factory","https://lucianobonaire.com/"],
+    ["l-cuba.png","Cuba Compagnie Bonaire","https://cubacompagniebonaire.nl/"],
+    ["l-bucket.png","The Bucket Bonaire","https://thebucketbonaire.com/"],
+    ["l-destino.png","Destino Digital",""]
+  ];
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+  /* ---------- Bonaire clock ---------- */
+  function now(){
+    var p={}; new Intl.DateTimeFormat("en-US",{timeZone:"America/Kralendijk",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23",weekday:"short"}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+    var wd=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday);
+    return {iso:p.year+"-"+p.month+"-"+p.day, h:+p.hour, mi:+p.minute, wd:wd};
+  }
+  function addDays(iso,n){var d=new Date(iso+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
+  function nice(iso){var d=new Date(iso+"T12:00:00Z");return d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",timeZone:"UTC"})}
+  function todayAt(t){
+    var L=[], i=t.iso, w=t.wd;
+    if(i>="2026-10-23"&&i<="2026-10-24") L.push("Hang Out Doubles Tournament");
+    if(w===4&&i>="2026-10-22"&&i<="2026-12-10") L.push("Doubles League, matches from 5 PM");
+    if(w===1&&i>="2026-10-26"&&i<="2026-12-07") L.push("Youth Academy, 5–7 PM");
+    if((w===1||w===2)&&i>="2026-11-02"&&i<="2026-12-15") L.push("Adult training, 7–9 PM");
+    if(i==="2026-12-13") L.push("Kids tournament, in the morning");
+    if(i==="2026-12-16") L.push("League finals night");
+    if(!L.length) L.push("Open play. Turn up and rotate after each game.");
+    return L;
+  }
+  function board(){
+    var t=now(), st=document.getElementById("b-status"); if(!st) return;
+    var mins=(22*60)-(t.h*60+t.mi), dot=document.getElementById("b-dot");
+    var left=document.getElementById("b-left"), sub=document.getElementById("b-sub");
+    var dayLbl=document.getElementById("b-day"), list=document.getElementById("b-today");
+    var day=t.iso;
+    if(mins>0){
+      st.textContent="Open now, free for everyone"; dot.classList.remove("off");
+      var h=Math.floor(mins/60), m=mins%60;
+      left.textContent=(h?h+" h ":"")+m+" min";
+      sub.textContent="of play left before the lights go out at 10 PM.";
+      dayLbl.textContent="Today at the courts · "+nice(day);
+    } else {
+      st.textContent="Lights out for tonight"; dot.classList.add("off");
+      left.textContent="Back tomorrow";
+      sub.textContent="The courts are open every day until 10 PM.";
+      day=addDays(t.iso,1);
+      dayLbl.textContent="Tomorrow at the courts · "+nice(day);
+    }
+    var d=new Date(day+"T12:00:00Z").getUTCDay();
+    list.innerHTML=todayAt({iso:day,wd:d}).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");
+  }
+
+  /* ---------- timetable ---------- */
+  function status(ev,t){
+    var i=t.iso;
+    if(ev.kind==="weekly"){
+      if(i>ev.e) return ["Finished",""];
+      var k=i<ev.s?ev.s:i, n=0;
+      while(new Date(k+"T12:00:00Z").getUTCDay()!==ev.wd && n<8){k=addDays(k,1);n++}
+      if(k===i) return ["Tonight","now"];
+      return ["Next: "+nice(k),""];
+    }
+    if(i<ev.s){
+      var days=Math.round((new Date(ev.s)-new Date(i))/864e5);
+      return [days===1?"Tomorrow":"In "+days+" days",""];
+    }
+    if(i<=ev.e) return [ev.kind==="run"?"Running":"On now","now"];
+    return ["Finished",""];
+  }
+  function tt(){
+    var t=now();
+    var html=EVENTS.map(function(ev){var s=status(ev,t);return '<li><span class="dt">'+esc(ev.d)+'</span><span class="nm">'+esc(ev.n)+'<span class="ds">'+esc(ev.x)+'</span></span><span class="sx '+s[1]+'">'+esc(s[0])+'</span></li>'}).join("");
+    document.querySelectorAll("[data-tt]").forEach(function(el){el.innerHTML=html});
+  }
+
+  /* ---------- ranking ---------- */
+  function ones(){
+    function col(list,label){
+      var top=list[0], rest=list.slice(1,5).map(function(r,i){return '<li><span class="num">'+(i+2)+'</span><span>'+esc(r[0])+'</span><span class="num">'+r[1]+'</span></li>'}).join("");
+      return '<div class="one"><p class="strong">'+label+'</p><p class="who">'+esc(top[0])+'</p><p class="pts num">'+top[1]+' points</p><ol>'+rest+'</ol></div>';
+    }
+    var html=col(RANK.w,"Women's number one")+col(RANK.m,"Men's number one");
+    document.querySelectorAll("[data-ones]").forEach(function(el){el.innerHTML=html});
+  }
+  function table(k){
+    var rows=RANK[k].map(function(r,i){return "<tr><td>"+(i+1)+"</td><td>"+esc(r[0])+"</td><td>"+r[1]+"</td></tr>"}).join("");
+    document.getElementById("r-table").innerHTML="<table><thead><tr><th>Rank</th><th>Name</th><th>Points</th></tr></thead><tbody>"+rows+"</tbody></table>";
+    document.getElementById("t-w").setAttribute("aria-selected",k==="w");
+    document.getElementById("t-m").setAttribute("aria-selected",k==="m");
+  }
+
+  /* ---------- posters + logos ---------- */
+  function posters(){
+    var el=document.querySelector("[data-posters]"); if(!el) return;
+    el.innerHTML=POSTERS.map(function(p,i){return '<figure><div class="pw"><img src="'+p[0]+'" alt="BTB poster: '+esc(p[1])+'" width="900" height="900" loading="lazy"></div><figcaption>'+esc(p[1])+'</figcaption></figure>'}).join("");
+  }
+  function logos(){
+    var html=LOGOS.map(function(l){
+      var img='<img src="'+l[0]+'" alt="'+esc(l[1])+'" loading="lazy">';
+      return l[2]?'<a class="'+(l[3]||"")+'" href="'+l[2]+'" target="_blank" rel="noopener" title="'+esc(l[1])+'">'+img+'</a>':'<a class="'+(l[3]||"")+'" role="img" aria-label="'+esc(l[1])+'" tabindex="-1">'+img+'</a>';
+    }).join("");
+    document.querySelectorAll("[data-logos]").forEach(function(el){el.innerHTML=html});
+  }
+
+  /* ---------- router ---------- */
+  var pages=[].slice.call(document.querySelectorAll("[data-page]"));
+  function pageFor(id){
+    var el=document.getElementById(id); if(!el) return null;
+    var p=el.closest("[data-page]"); return p?{page:p,el:el}:null;
+  }
+  function go(id,push){
+    var r=pageFor(id)||pageFor("home");
+    pages.forEach(function(p){p.hidden=(p!==r.page)});
+    var name=r.page.getAttribute("data-page");
+    document.querySelectorAll(".menu > li > a").forEach(function(a){
+      var h=a.getAttribute("href").slice(1), pr=pageFor(h);
+      if(pr && pr.page===r.page && name!=="home") a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    });
+    closeDrawer();
+    var top=(r.el===r.page.firstElementChild||id==="home");
+    requestAnimationFrame(function(){
+      if(top) window.scrollTo({top:0,behavior:"auto"});
+      else { var y=r.el.getBoundingClientRect().top+window.scrollY-80; window.scrollTo({top:y,behavior:"auto"}); }
+      reveal();
+    });
+    if(push){ try{history.replaceState(null,"","#"+id)}catch(e){} }
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest("a[data-nav]"); if(!a) return;
+    var id=a.getAttribute("href").slice(1); if(!document.getElementById(id)) return;
+    e.preventDefault(); go(id,true);
+  });
+
+  /* ---------- drawer ---------- */
+  var drawer=document.getElementById("drawer"), ob=document.getElementById("menuOpen");
+  function closeDrawer(){ if(!drawer.hidden){drawer.hidden=true;ob.setAttribute("aria-expanded","false");document.body.style.overflow=""} }
+  ob.addEventListener("click",function(){drawer.hidden=false;ob.setAttribute("aria-expanded","true");document.body.style.overflow="hidden";document.getElementById("menuClose").focus()});
+  document.getElementById("menuClose").addEventListener("click",function(){closeDrawer();ob.focus()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer()});
+
+  /* ---------- forms + copy ---------- */
+  document.querySelectorAll("form[data-form]").forEach(function(f){
+    f.addEventListener("submit",function(e){
+      e.preventDefault();
+      var n=f.querySelector("[data-note]");
+      n.textContent="Design prototype: on the live site this "+f.getAttribute("data-form").toLowerCase()+" goes straight to the BTB team. Nothing was sent.";
+      n.hidden=false;
+    });
+  });
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var v=b.getAttribute("data-copy");
+      function done(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1600)}
+      try{ navigator.clipboard.writeText(v).then(done,function(){sel(b)}) }catch(e){ sel(b) }
+    });
+  });
+  function sel(b){var t=b.parentNode.querySelector("b");var r=document.createRange();r.selectNodeContents(t);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected"}
+
+  /* ---------- entrances ---------- */
+  var io=null, reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function reveal(){
+    if(reduce||!("IntersectionObserver" in window)) return;
+    if(!io) io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var el=en.target;el.classList.add("in");el.classList.remove("pre");io.unobserve(el)}})},{rootMargin:"0px 0px -8% 0px"});
+    var sel=".page:not([hidden]) .sec h2, .page:not([hidden]) .sec .lead, .page:not([hidden]) .figs > div, .page:not([hidden]) .tt li, .page:not([hidden]) .offer figure, .page:not([hidden]) .offer .b, .page:not([hidden]) .one, .page:not([hidden]) .roles > div, .page:not([hidden]) .logos a, .page:not([hidden]) .posters figure, .page:not([hidden]) .split figure, .page:not([hidden]) .club .ph";
+    var vh=window.innerHeight, groups=new Map();
+    document.querySelectorAll(sel).forEach(function(el){
+      if(el.dataset.seen) return; el.dataset.seen="1";
+      var r=el.getBoundingClientRect(); if(r.top<vh) return;
+      var parent=el.parentNode, k=groups.get(parent)||0; groups.set(parent,k+1);
+      el.style.transitionDelay=Math.min(k*75,450)+"ms";
+      el.classList.add("pre"); io.observe(el);
+    });
+  }
+
+  /* ---------- boot ---------- */
+  board(); setInterval(board,30000); tt(); ones(); table("w"); posters(); logos();
+  document.getElementById("t-w").addEventListener("click",function(){table("w")});
+  document.getElementById("t-m").addEventListener("click",function(){table("m")});
+  var h=(location.hash||"").slice(1);
+  go(/^[A-Za-z0-9._~-]+$/.test(h)&&document.getElementById(h)?h:"home",false);
+})();
+</script>
+
+</body>
+</html>
